@@ -8,10 +8,11 @@
 <style>
     .fa {
         border: 1px solid black;
+        margin-bottom: 300px;
     }
 
     .fa_1 {
-        margin-top: 300px;
+        margin-top: 50px;
         border: 1px solid black;
     }
 
@@ -29,6 +30,33 @@
     .clear {
         clear: both;
     }
+
+    .of {
+        overflow: hidden;
+    }
+    
+    .clearfix:after {
+        content: "";
+        display: block;
+        height: 0;
+        visibility: hidden;
+        clear: both;
+    }
+    .clearfix {
+        *zoom: 1; 
+    }
+
+    .clearfix2:before, .clearfix2:after {
+        content: "";
+        display: table;
+    }
+
+    .clearfix2:after {
+        clear: both;
+    }
+    .clearfix2 {
+        *zoom: 1;
+    }
 </style>
 <body>
     <div class="fa">
@@ -37,8 +65,27 @@
     <p>如何清除浮动？</p>
 
     <div class="fa_1">
-        <div class="ch_1 fl">clear both的方式</div>
+        <div class="ch_1 fl">clear both的方式,额外标签法(隔墙法),这里必须是块元素</div>
         <div class="clear"></div>
+    </div>
+
+    <div class="fa_1 of">
+        <div class="ch_1 fl">
+            父级添加overflow属性方法 hidden | auto | scroll | overlay
+            <a href="http://www.voycn.com/article/css-overflow-overlay-detexing" target="_blank">auto和overlay差别</a>
+        </div>
+    </div>
+
+    <div class="fa_1 clearfix">
+        <div class="ch_1 fl">
+            父级添加伪类的方法
+        </div>
+    </div>
+
+    <div class="fa_1 clearfix2">
+        <div class="ch_1 fl">
+            双伪元素清除浮动
+        </div>
     </div>
 </body>
 </html>
