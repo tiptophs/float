@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动的扩展</title>
+    <style>
+
+        .fa1, .fa2 {
+            width: 500px;
+            height: 500px;
+        }
+
+        .fa2 {
+            margin-top:100px;
+        }
+        
+        .fl {
+            float: left;
+            width: 200px;
+            height: 200px;
+        }
+        .one {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+        }
+        .two {
+            background-color: blue;
+            height: 300px;
+            width: 300px;
+        }
+        .three {
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="fa1">
+        <div class="one fl"></div>
+        <div class="two fl"></div>
+        <div class="three fl"></div>
+    </div>
+
+    <div class="fa2">
+        <div class="one"></div>
+        <div class="two fl"></div>
+        <div class="three fl"></div>
+    </div>
+</body>
+</html>

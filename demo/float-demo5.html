@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动和定位的差别，什么叫半脱离文档流</title>
+</head>
+    <style>
+        .fa {
+            width: 800px;
+            height: 600px;
+            border: 1px solid brown;
+            position: relative;
+        }
+        .fl {
+            float: left;
+        }
+
+        .ch_1 {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .ch_2 {
+            width: 400px;
+            height: 400px;
+            background-color: blueviolet;
+        }
+
+        .ch_3 {
+            width: 100px;
+            height: 100px;
+            position:absolute;
+            background-color: cyan;
+            z-index: 1;
+        }
+
+        .ch_4 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: green;
+            z-index: 2;
+        }
+
+        .po_left {
+            left: 0px;
+            top: 0px;
+        }
+
+        .po_right {
+            left: 200px;
+            top: 0px;
+        }   
+    </style>
+<body>
+    <div class="fa">
+        <div class="ch_1 fl"></div>
+        <div class="ch_2">
+            文档流是相对于盒子模型讲的文本流是相对于文子段落讲的元素浮动之后，会让它跳出文档流，也就是说当它后面还有元素时，其他元素会无视它所占据了的区域，直接在它身下布局。但是文字却会认同浮动元素所占据的区域，围绕它布局，也就是没有拖出文本流。但是绝对定位后，不仅元素盒子会拖出文档流，文字也会出文本流。那么后面元素的文本就不会在认同它的区域位置，会直接在它后面布局，不会在环绕。当然你可以使用 index-z 来让底部的元素到上面来，类似于一个图层的概念
+        </div>
+        <div class="ch_3 po_left"></div>
+        <div class="ch_3 po_right"></div>
+        <div class="ch_4 po_left"></div>
+    </div>
+</body>
+</html>

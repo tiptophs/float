@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动的特性二</title>
+    <style>
+        .float_demo {
+            height: 100px;
+            float: left;
+            background-color:pink;
+        }
+
+        .no_spacing {
+            margin-top:200px;
+        }
+        
+        .fl {
+            float: left;
+            width: 200px;
+            height: 200px;
+        }
+        .one {
+            background-color: pink;
+        }
+        .two {
+            background-color: blue;
+        }
+        .three {
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        非行内元素，行内元素无法设置高度，和宽度。
+        和行内块类似，类似于设置属性display: inline-block; 但是浮动不会保留间距。
+    </p>
+    <div class="float_demo">浮动调研_@#</div>
+
+    <div class="no_spacing">
+        <div class="one fl"></div>
+        <div class="two fl"></div>
+        <div class="three fl"></div>
+    </div>
+</body>
+</html>

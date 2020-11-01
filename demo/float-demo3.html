@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浮动和父盒子之间的关系</title>
+</head>
+<style>
+    .fa {
+        width: 500px;
+        height: 500px;
+        padding: 25px 0px 0px 25px;
+        border:15px solid blue;
+        background-color:red;
+    }
+    .ch_1 {
+        width: 150px;
+        height: 150px;
+        background-color: pink;
+        float:left;
+    }
+    .ch_2 {
+        width: 150px;
+        height: 150px;
+        background-color: purple;
+        float:right;
+    }
+</style>
+<body>
+    <div class="fa">
+        <div class="ch_1"></div>
+        <div class="ch_2"></div>
+    </div>
+</body>
+</html>
