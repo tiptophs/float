@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>flow-root演示</title>
+    <style>
+        .container2::after {
+        content: "";
+        display: block;
+        clear: both;
+        }
+
+        .container3 {
+        display: flow-root;
+        }
+
+
+        .container {
+        border: 2px solid #3bc9db;
+        border-radius: 5px;
+        background-color: #e3fafc;
+        width: 400px;
+        padding: 5px;
+        }
+
+
+        .item {
+        height: 100px;
+        width: 100px;
+        background-color: #1098ad;
+        border: 1px solid #0b7285;
+        border-radius: 5px;
+        float: left;
+        }
+
+        h2 {
+        padding: 2em 0 0 0;
+        }
+
+        .clear {
+        clear: both;
+        }
+
+        body {
+        font: 18px Helvetica, sans-serif;
+        }
+
+        .wrapper {
+        max-width: 600px;
+        margin: 40px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+
+        <h1>display: flow-root example</h1>
+        
+        <p>A new value of the display property that will enable containers to clear floats. <em>Needs Chrome Canary or Firefox Nightlies.</em></p>
+        
+        <h2>Default behavior</h2>
+        
+        <p>The following item is a wrapper containing a block that is floated left.</p>
+        
+        <div class="container container1">
+          <div class="item"></div>
+          Example one
+        </div>
+          
+         <p>The border on the containing block only wraps the text as the floated element is taken out of flow.</p>
+          
+          <p>The content following the box will also rise up and wrap around the float unless we set it to clear.</p>
+        
+        <h2 class="clear">The clearfix hack</h2>
+        
+        <p>In this next item we use a clearfix hack to cause the wrapper to clear the floated item.</p>
+        
+        <div class="container container2">
+          <div class="item"></div>
+          Example two
+        </div>
+        
+        <h2>Using display: flow-root</h2>
+        
+        <p>CSS now has a way to cause elements to clear floats. We set the value of display to flow-root and our floated box is cleared.</p>
+        
+        <div class="container container3">
+          <div class="item"></div>
+          Example three
+        </div>
+          
+        </div>  
+</body>
+</html>
+

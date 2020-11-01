@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc调研</title>
+    <style>
+        .box_bfc {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border:1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h3>内部的Box会在垂直方向，一个接一个地放置, 我们所说的块元素单独一行</h3>
+    <div class="box_bfc"></div>
+    <div class="box_bfc"></div>
+    <div class="box_bfc"></div>
+</body>
+</html>

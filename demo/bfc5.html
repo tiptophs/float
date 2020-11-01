@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc调研</title>
+
+    <style>
+        .fa {
+            width: 800px;
+            border: 1px solid purple;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .ch {
+            width: 400px;
+            height: 100px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</h3>
+    <div class="fa">
+        <div class="fl ch"></div>
+        <p>我是P标签，我只影响了父标签的高度，不会影响浮动</p>
+    </div>
+</body>
+</html>

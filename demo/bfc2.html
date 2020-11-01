@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bfc调研</title>
+</head>
+    <style>
+        .fa {
+            border: 1px solid purple;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+        .mr_b {
+            margin-bottom:80px;
+        }
+        .mr_t {
+            margin-top:50px;
+        }
+        .bfc {
+            display: flow-root;
+        }
+    </style>
+<body>
+    <h3>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</h3>
+
+    <div class="fa">
+        <div class="box mr_b"></div>
+        <div class="box mr_t"></div>
+    </div>
+
+    <p>解决方式: 生成一个BFC, 疑问：为啥我设置padding，border等也可以实现取消重叠?</p>
+    <div class="fa">
+        <div class="box mr_b"></div>
+        <div class="bfc">
+            <div class="box mr_t"></div>
+        </div>
+    </div>
+
+</body>
+</html>
