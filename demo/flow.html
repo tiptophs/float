@@ -7,88 +7,78 @@
     <title>flow-root演示</title>
     <style>
         .container2::after {
-        content: "";
-        display: block;
-        clear: both;
+          content: "";
+          display: block;
+          clear: both;
         }
 
         .container3 {
-        display: flow-root;
+          display: flow-root;
         }
 
 
         .container {
-        border: 2px solid #3bc9db;
-        border-radius: 5px;
-        background-color: #e3fafc;
-        width: 400px;
-        padding: 5px;
+          border: 2px solid #3bc9db;
+          border-radius: 5px;
+          background-color: #e3fafc;
+          width: 400px;
+          padding: 5px;
         }
 
 
         .item {
-        height: 100px;
-        width: 100px;
-        background-color: #1098ad;
-        border: 1px solid #0b7285;
-        border-radius: 5px;
-        float: left;
+          height: 100px;
+          width: 100px;
+          background-color: #1098ad;
+          border: 1px solid #0b7285;
+          border-radius: 5px;
+          float: left;
         }
 
         h2 {
-        padding: 2em 0 0 0;
+          padding: 2em 0 0 0;
         }
 
         .clear {
-        clear: both;
+          clear: both;
         }
 
         body {
-        font: 18px Helvetica, sans-serif;
+          font: 18px Helvetica, sans-serif;
         }
 
         .wrapper {
-        max-width: 600px;
-        margin: 40px auto;
+          max-width: 600px;
+          margin: 40px auto;
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
 
-        <h1>display: flow-root example</h1>
+        <h1>display: flow-root 属性演示</h1>
         
-        <p>A new value of the display property that will enable containers to clear floats. <em>Needs Chrome Canary or Firefox Nightlies.</em></p>
+        <p>display属性的新值，它将使容器清除浮动。 <em>这里采用chrome浏览器</em></p>
         
-        <h2>Default behavior</h2>
+        <h2>浮动行为导致高度坍塌</h2>
         
-        <p>The following item is a wrapper containing a block that is floated left.</p>
-        
+        <p>下面的容器包含有一个浮动的盒子</p>
         <div class="container container1">
           <div class="item"></div>
-          Example one
+           简单的浮动塌陷案例
         </div>
-          
-         <p>The border on the containing block only wraps the text as the floated element is taken out of flow.</p>
-          
-          <p>The content following the box will also rise up and wrap around the float unless we set it to clear.</p>
-        
-        <h2 class="clear">The clearfix hack</h2>
-        
-        <p>In this next item we use a clearfix hack to cause the wrapper to clear the floated item.</p>
-        
+
+        <h2 class="clear">设置清除浮动</h2>
         <div class="container container2">
           <div class="item"></div>
-          Example two
+          清除浮动造成的坍塌
         </div>
         
-        <h2>Using display: flow-root</h2>
-        
-        <p>CSS now has a way to cause elements to clear floats. We set the value of display to flow-root and our floated box is cleared.</p>
-        
+
+        <h2>采用新的属性display: flow-root</h2>
         <div class="container container3">
           <div class="item"></div>
-          Example three
+          新的属性 display: flow-root
         </div>
           
         </div>  
