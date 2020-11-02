@@ -4,7 +4,7 @@
 
  - 推荐一个查询兼容性网站：https://caniuse.com/
 
-    目前兼容性：![img](D:\work\depository\float\img\flow.png)
+    目前兼容性：![img](http://127.0.0.1:5500/img/flow.png)
 
    来看一个简单的示例，比如我们一个这样的结构：
 
