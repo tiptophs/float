@@ -16,6 +16,13 @@
             height: 100px;
             background-color: pink;
         }
+        .box_f {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+            margin-top:50px;
+            margin-bottom:50px;
+        }
         .mr_b {
             margin-bottom:80px;
         }
@@ -107,15 +114,22 @@
             <div class="box mr_t"></div>
             <p>这里也可以理解为没有间隙。</p>
         </div>
+
+        <div class="fl">
+            <div class="box mr_b"></div>
+            <div class="bfc">
+                <div class="box mr_t"></div>
+            </div>
+            <p>解决方式: 生成一个BFC, 使其不再同一个BFC中</p>
+        </div>
         
     </div>
 
-    <p>解决方式: 生成一个BFC</p>
+    <p>外边距塌陷之clearance</p>
     <div class="fa">
         <div class="box mr_b"></div>
-        <div class="bfc">
-            <div class="box mr_t"></div>
-        </div>
+        <div class="box_f fl"></div>
+        <div class="box mr_t" style="clear:both;"></div>
     </div>
 
 </body>
