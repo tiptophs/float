@@ -18,16 +18,23 @@
 
         .ch {
             width: 400px;
-            height: 100px;
+            height: 200px;
             background-color: pink;
         }
 
+        .ch_ch {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;      
+        }
     </style>
 </head>
 <body>
     <h3>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</h3>
     <div class="fa">
-        <div class="fl ch"></div>
+        <div class="fl ch">
+            <div class="ch_ch"></div>
+        </div>
         <p>我是P标签，我只影响了父标签的高度，不会影响浮动</p>
     </div>
 </body>
