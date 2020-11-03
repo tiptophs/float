@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>clear 属性讲解</title>
+
+    <style>
+        .fa {
+            border: 1px solid #ccc;
+            background-color: pink;
+            width: 400px;
+        }
+
+        .fa_1 {
+            border: 1px solid #ccc;
+            background-color: pink;
+            width: 400px;
+            margin-top:300px;
+        }
+
+        .fa_2 {
+            border: 1px solid #ccc;
+            background-color: pink;
+            width: 400px;
+        }
+
+        .fl {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            background-color: green;
+        }
+
+        .clear {
+            clear: both;
+        }
+
+        .ch {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            background-color: green;
+        }
+
+        .flow {
+            display: flow-root;
+            margin-bottom:30px;
+            border:1px solid purple;
+        }
+    </style>
+</head>
+<body>
+    <h3>clear属性的作用，clear:both是如何清除浮动的。</h3>
+    <div class="flow">
+        <div class="fa">
+            <div class="fl"></div>
+            <div class="fl clear"></div>
+            <div class="fl"></div>
+        </div>
+    
+        <div class="fa_1">
+            <div class="fl"></div>
+            <div class="clear"></div>
+            <div class="fl"></div>
+        </div>
+    </div>
+
+    <h3>浮动元素的影响，采用BFC效果可能更好于clear</h3>
+    <div class="flow">
+        <div class="fa">
+            <div class="fl"></div>
+            <div class="fl clear"></div>
+            <div class="fl"></div>
+        </div>
+    
+        <div class="fa_2">
+            <div class="fl"></div>
+            <div class="clear"></div>
+            <div class="fl"></div>
+        </div>
+    </div>
+    
+</body>
+</html>
