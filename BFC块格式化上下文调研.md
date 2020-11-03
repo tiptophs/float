@@ -139,7 +139,7 @@
 
       2. 元素的margin-bottom与其下一个常规文档流的兄弟元素的margin-top
 
-      3. height为auto的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom
+      3. height为auto(既最后一个子元素与父元素贴边)的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom
 
       4. 高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的BFC的元素的margin-top和margin-bottom
 

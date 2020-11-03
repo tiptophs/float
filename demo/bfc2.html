@@ -19,22 +19,98 @@
         .mr_b {
             margin-bottom:80px;
         }
+        .mr_b2 {
+            margin-bottom:100px;
+        }
         .mr_t {
             margin-top:50px;
+        }
+        .mr_t2 {
+            margin-top:100px;
         }
         .bfc {
             display: flow-root;
         }
+
+        .fl {
+            float: left;
+            margin-right:10px;
+            width: 100px;
+        }
+
+        .clearfix {
+            overflow: hidden;
+        }
+
+        .fa_outer {
+            border: 1px solid #ccc;
+            padding:1px;
+        }
+
+        .box_no_height {
+            width: 100px;
+            background-color: pink;   
+        }
+
+        .no_height {
+            height: 0px;
+            min-height: 0px;
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
     </style>
 <body>
-    <h3>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</h3>
+    <ul>
+        <li>必须是处于常规文档流（非float和绝对定位）的块级盒子,并且处于同一个BFC当中。</li>
+        <li>没有线盒，没有空隙（clearance，下面会讲到），没有padding和border将他们分隔开</li>
+    </ul>
 
-    <div class="fa">
-        <div class="box mr_b"></div>
-        <div class="box mr_t"></div>
+    <div class="fa clearfix">
+        <div class="fl">
+            <div class="box mr_b"></div>
+            <div class="fa_outer">
+                <div class="box mr_t"></div>
+            </div>
+            <p>没有线盒，没有空隙（clearance，下面会讲到），没有padding和border将他们分隔开</p>
+        </div>
+
+        <div class="fl">
+            <div class="box mr_b"></div>
+            <div class="box mr_t"></div>
+            <p>元素的margin-bottom与其下一个常规文档流的兄弟元素的margin-top</p>
+        </div>
+
+        <div class="fl">
+            <div class="box mr_b"></div>
+            <div class="box mr_t">
+                <div class="box mr_t2"></div>
+            </div>
+            <p>元素的margin-top与其第一个常规文档流的子元素的margin-top</p>
+        </div>
+
+        <div class="fl">
+            <div class="box_no_height mr_b">
+                <div class="box mr_b2"></div>
+            </div>
+            <div class="box mr_t"></div>
+            <p>height为auto的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom</p>
+        </div>
+
+        <div class="fl">
+            <div class="no_height"></div>
+            <p>高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的BFC的元素的margin-top和margin-bottom</p>
+        </div>
+
+        <div class="fl">
+            <div class="box mr_b"></div>
+            <div class="no_height"></div>
+            <div class="box mr_t"></div>
+            <p>这里也可以理解为没有间隙。</p>
+        </div>
+        
     </div>
 
-    <p>解决方式: 生成一个BFC, 疑问：为啥我设置padding，border等也可以实现取消重叠?</p>
+    <p>解决方式: 生成一个BFC</p>
     <div class="fa">
         <div class="box mr_b"></div>
         <div class="bfc">
