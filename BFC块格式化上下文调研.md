@@ -1,23 +1,62 @@
 ##  BFC (block formatting context)块格式化上下文调研
 
   ### MDN解释：
+  
+   - [MDN上BFC介绍地址一](https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context)
+   
+   - [MDN上BFC介绍地址二](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flow_Layout/Intro_to_formatting_contexts)
+   
+   - **Block formatting contexts 块格式化上下文** 
 
-  一个块格式化上下文（block formatting context） 是Web页面的可视化CSS渲染出的一部分。它是块级盒布局出现的区域，也是浮动层元素进行交互的区域。
-   一个块格式化上下文由以下之一创建：
+     -  ```
+          块格式化上下文（Block Formatting Context，BFC） 是Web页面的可视CSS渲染的一部分，是块盒子的布局过程发生的区域，也是浮动元素与其他元素交互的区域。
 
-  - 根元素或其它包含它的元素
-  - 浮动元素 (元素的 float 不是 none)
-  - 绝对定位元素 (元素具有 position 为 absolute 或 fixed)
-  - 内联块 (元素具有 display: inline-block)
-  - 表格单元格 (元素具有 display: table-cell，HTML表格单元格默认属性)
-  - 表格标题 (元素具有 display: table-caption, HTML表格标题默认属性)
-  - 具有overflow 且值不是 visible 的块元素，
-  - display: flow-root ( 后面讲解 )
-  - column-span: all 应当总是会创建一个新的格式化上下文，即便具有 column-span: all 的元素并不被包裹在一个多列容器中。
-  - 一个块格式化上下文包括创建它的元素内部所有内容，除了被包含于创建新的块级格式化上下文的后代元素内的元素。
+          下列方式会创建块格式化上下文：
 
-  块格式化上下文对于定位 (参见 float) 与清除浮动 (参见 clear) 很重要。定位和清除浮动的样式规则只适用于处于同一块格式化上下文内的元素。浮动不会影响其它块格式化上下文中元素的布局，并且清除浮动只能清除同一块格式化上下文中在它前面的元素的浮动。
+            1. 根元素（<html>）
+            2. 浮动元素（元素的 float 不是 none）
+            3. 绝对定位元素（元素的 position 为 absolute 或 fixed）
+            4. 行内块元素（元素的 display 为 inline-block）
+            5. 表格单元格（元素的 display 为 table-cell，HTML表格单元格默认为该值）
+            6. 表格标题（元素的 display 为 table-caption，HTML表格标题默认为该值）
+            7. 匿名表格单元格元素（元素的 display 为 table、table-row、 table-row-group、table-header-group、table-footer-group（分别是HTML table、row、tbody、thead、tfoot 的默认属性）或 inline-table）
+            8. overflow 值不为 visible 的块元素
+            9. display 值为 flow-root 的元素
+            10. contain 值为 layout、content 或 paint 的元素
+            11. 弹性元素（display 为 flex 或 inline-flex 元素的直接子元素）
+            12. 网格元素（display 为 grid 或 inline-grid 元素的直接子元素）
+            多列容器（元素的 column-count 或 column-width 不为 auto，包括 column-count 为 1）
+            13. column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。
+            块格式化上下文包含创建它的元素内部的所有内容.
 
+          块格式化上下文对浮动定位（参见 float）与清除浮动（参见 clear）都很重要。
+          
+            1. 浮动定位和清除浮动时只会应用于同一个BFC内的元素。
+            2. 浮动不会影响其它BFC中元素的布局，而清除浮动只能清除同一BFC中在它前面的元素的浮动。
+            3. 外边距折叠（Margin collapsing）也只会发生在属于同一BFC的块级元素之间。
+        ```
+
+     -  ```
+          文档最外层元素使用块布局规则或称为初始块格式上下文。这意味着<html>元素块中的每个元素都是按照正常流程遵循块和内联布局规则进行布局的。参与 BFC 的元素使用CSS框模型概述的规则，该模型定义了元素的边距、边框和填充如何与同一上下文中的其他块交互。
+            
+            <html> 元素不是唯一能够创建块格式上下文的元素。**默认为块布局的任何元素也会为其后代元素创建块格式上下文**。此外，还有一些CSS属性可以使元素创建一个BFC，即使默认情况下它不这样做。
+
+            除了文档的根元素(<html>) 之外，还将在以下情况下创建一个新的BFC：
+
+              1. 使用float 时其浮动的元素
+              2. 绝对定位的元素 (包含 position: fixed 或position: absolute 或 positon: sticky)
+              3. 使用以下属性的元素 display: inline-block
+              4. 表格单元格或使用 display: table-cell, 包括使用 display: table-* 属性的所有表格单元格
+              5. 表格标题或使用 display: table-caption 的元素
+              6. 块级元素的 overflow 属性不为 visible
+              7. 元素属性为 display: flow-root 或 display: flow-root list-item
+              8. 元素属性为 contain: layout, content, 或 strict
+              9. flex items
+              10. 网格布局元素
+              11. multicol containers
+              12. 元素属性 column-span 设置为 all
+            这很有用，因为新的BFC的行为与最外层的文档非常相似，它在主布局中创造了一个小布局。BFC包含其内部的所有内容，float 和 clear 仅适用于同一格式上下文中的项目，而页边距仅在同一格式上下文中的元素之间折叠。
+        ```
   ### 关于BFC的定义：
 
   - BFC(Block formatting context)直译为"块级格式化上下文"。它**是一个独立的渲染区域**，只有**Block-level box**参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
@@ -34,7 +73,7 @@
   
     BFC 可以简单的理解为**某个元素的一个 CSS 属性**，只不过这个属性**不能被开发者显式的修改**，拥有这个属性的元素对内部元素和外部元素会表现出一些特性，这就是BFC。
     
-  - **BFC概括：**可以在心中记住这么一个概念———**所谓的BFC就是css布局的一个概念，是一块区域，一个环境。** 
+  - **BFC概括：** 可以在心中记住这么一个概念———**所谓的BFC就是css布局的一个概念，是一块区域，一个环境。** 
 
   - 顶级(top-level)元素，块级(block-level)元素，内联(inline)元素
 
@@ -50,7 +89,7 @@
 
   ### 触发条件或者说哪些元素会生成BFC：
 
-​	满足下列条件之一就可触发BFC
+​	满足下列条件之一就可触发BFC(常用)
 
   		【1】根元素，即HTML元素
 
@@ -96,13 +135,13 @@
 
     - 都属于垂直方向上相邻的外边距，可以是下面任意一种情况：
 
-    - 元素的margin-top与其第一个常规文档流的子元素的margin-top
+      1. 元素的margin-top与其第一个常规文档流的子元素的margin-top
 
-    - 元素的margin-bottom与其下一个常规文档流的兄弟元素的margin-top
+      2. 元素的margin-bottom与其下一个常规文档流的兄弟元素的margin-top
 
-    - height为auto的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom
+      3. height为auto的元素的margin-bottom与其最后一个常规文档流的子元素的margin-bottom
 
-    - 高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的BFC的元素的margin-top和margin-bottom
+      4. 高度为0并且最小高度也为0，不包含常规文档流的子元素，并且自身没有建立新的BFC的元素的margin-top和margin-bottom
 
   - **以上的条件意味着下列的规则:**
 
@@ -122,7 +161,7 @@
 
     - 一个不包含border-top、border-bottom、padding-top、padding-bottom的常规文档流元素，并且其 'height' 为 0 或 'auto'， 'min-height' 为 '0'，其里面也不包含行盒(line box)，其自身的 margin-top 和 margin-bottom 会折叠。
 
-- 每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。[demo](http://127.0.0.1:5500/demo/bfc3.html)
+- 每个元素的margin 即box的左边， 与包含块border 即box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。[demo](http://127.0.0.1:5500/demo/bfc3.html)
 - BFC的区域不会与float box重叠。[demo](http://127.0.0.1:5500/demo/bfc4.html)
 - BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。[demo](http://127.0.0.1:5500/demo/bfc5.html)
 - 计算BFC的高度时，浮动元素也参与计算[demo](http://127.0.0.1:5500/demo/bfc6.html)
