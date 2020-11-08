@@ -26,8 +26,14 @@
             width: 200px;
             height: 200px;
         }
+        .one_1 {
+            background-color: pink;
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
         .two {
-            background-color: blue;
+            background-color: #00BCD4;
             height: 300px;
             width: 300px;
         }
@@ -38,15 +44,21 @@
 </head>
 <body>
     <div class="fa1">
-        <div class="one fl"></div>
-        <div class="two fl"></div>
-        <div class="three fl"></div>
+        <div class="one fl">float:left</div>
+        <div class="two fl">float:left; 我与前面的浮动盒子高度对齐了。</div>
+        <div class="three fl">float:left; 父盒子放不下我了，我要换行了。</div>
     </div>
 
     <div class="fa2">
-        <div class="one"></div>
-        <div class="two fl"></div>
-        <div class="three fl"></div>
+        <div class="one">我是一个标准流的块元素</div>
+        <div class="two fl">我浮动后，显示在前面块元素的正下方</div>
+        <div class="three fl">我与前面浮动元素高度对齐</div>
+    </div>
+
+    <div class="fa2">
+        <div class="one_1">我是一个行内块元素</div>
+        <div class="two fl">我浮动后，显示在前面块元素的正下方</div>
+        <div class="three fl">我与前面浮动元素高度对齐</div>
     </div>
 </body>
 </html>

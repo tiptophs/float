@@ -56,13 +56,13 @@
     </style>
 <body>
     <div class="fa">
-        <div class="ch_1 fl"></div>
+        <div class="ch_1 fl">float:left;我是浮动元素</div>
         <div class="ch_2">
             文档流是相对于盒子模型讲的文本流是相对于文子段落讲的元素浮动之后，会让它跳出文档流，也就是说当它后面还有元素时，其他元素会无视它所占据了的区域，直接在它身下布局。但是文字却会认同浮动元素所占据的区域，围绕它布局，也就是没有拖出文本流。但是绝对定位后，不仅元素盒子会拖出文档流，文字也会出文本流。那么后面元素的文本就不会在认同它的区域位置，会直接在它后面布局，不会在环绕。当然你可以使用 index-z 来让底部的元素到上面来，类似于一个图层的概念
         </div>
-        <div class="ch_3 po_left"></div>
-        <div class="ch_3 po_right"></div>
-        <div class="ch_4 po_left"></div>
+        <div class="ch_3 po_left">左定位z:1</div>
+        <div class="ch_3 po_right">右定位</div>
+        <div class="ch_4 po_left">z:2</div>
     </div>
 </body>
 </html>
