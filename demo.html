@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+</head>
+    <style>
+        .fa {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .fa2 {
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+            margin-top:100px;    
+        }
+
+        .ch {
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+        }
+
+        .fl {
+            float: left;
+        }
+
+        .clearfix::after {
+            visibility: hidden;
+            height: 0;
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .ov {
+            padding-top:1px;
+        }
+
+        .bfc {
+            display: flow-root;
+        }
+    </style>
+<body>
+    
+    <div class="fa fl"></div>
+    <div class="bfc">
+        <div class="fa2">
+            <!-- <div class="ch fl"></div> -->
+        </div>
+    </div>
+</body>
+</html>
